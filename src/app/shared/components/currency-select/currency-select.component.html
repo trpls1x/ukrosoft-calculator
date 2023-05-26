@@ -1,0 +1,36 @@
+<mat-form-field>
+  <mat-select
+    [formControl]="control"
+    (openedChange)="!$event && clearSearch()"
+    (selectionChange)="handleCurrencySelect($event.value)"
+  >
+    <mat-select-trigger>
+      <span>
+        {{ selectedCurrency?.abbreviation }} ({{ selectedCurrency?.fullName }})
+      </span>
+
+      <div class="apr-label">APR {{ selectedCurrency?.apr }}%</div>
+    </mat-select-trigger>
+
+    <div class="options-list">
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput [formControl]="searchControl" placeholder="Search" />
+      </mat-form-field>
+
+      <div class="info">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit
+      </div>
+
+      <mat-option
+        *ngFor="let currency of filteredCurrencies"
+        class="option"
+        [value]="currency"
+      >
+        <span>{{ currency.abbreviation }} ({{ currency.fullName }})</span>
+
+        <div class="apr-label">APR {{ currency.apr }}%</div>
+      </mat-option>
+    </div>
+  </mat-select>
+</mat-form-field>

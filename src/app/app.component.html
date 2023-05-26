@@ -1,0 +1,139 @@
+<div class="page-wrapper">
+  <div class="wrapper">
+    <div class="form-wrapper">
+      <header>
+        <a>Lorem1</a>
+        <a>Lorem2</a>
+        <a>Lorem3</a>
+        <a>Lorem4</a>
+      </header>
+
+      <form [formGroup]="form">
+        <label>Amount</label>
+        <mat-form-field>
+          <span matPrefix>$</span>
+          <input
+            matInput
+            formControlName="amount"
+            type="number"
+            [min]="minAmount"
+            [max]="maxAmount"
+            (keydown)="preventLiterals($event)"
+          />
+
+          <button
+            matSuffix
+            mat-icon-button
+            class="input-decrease"
+            [disabled]="amountControl?.value - 1000 < minAmount"
+            (click)="decreaseAmount()"
+          >
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+
+          <button
+            matSuffix
+            mat-icon-button
+            class="input-increase"
+            [disabled]="amountControl?.value + 1000 > maxAmount"
+            (click)="increaseAmount()"
+          >
+            <mat-icon>add_circle</mat-icon>
+          </button>
+
+          <mat-error>
+            <ukr-form-field-error></ukr-form-field-error>
+          </mat-error>
+        </mat-form-field>
+
+        <label>Currency</label>
+        <ukr-currency-select
+          [currencies]="CurrenciesMock"
+          (currencySelected)="onCurrencySelected($event)"
+        ></ukr-currency-select>
+
+        <label>Period</label>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="period"
+            type="number"
+            (keydown)="preventLiterals($event)"
+          />
+
+          <mat-error>
+            <ukr-form-field-error></ukr-form-field-error>
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+      <footer>
+        <div class="switch-value">
+          <span>Lorem ipsum</span>
+          <mat-icon
+            fontIcon="info"
+            matTooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla corrupti"
+            [class.active]="!switchValue"
+          ></mat-icon>
+        </div>
+
+        <mat-slide-toggle
+          [(ngModel)]="switchValue"
+          [disableRipple]="true"
+        ></mat-slide-toggle>
+
+        <div class="switch-value">
+          <span>Lorem ipsum dolor sit</span>
+          <mat-icon
+            fontIcon="info"
+            matTooltip="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla corrupti"
+            [class.active]="switchValue"
+          ></mat-icon>
+        </div>
+      </footer>
+    </div>
+
+    <div class="side-section">
+      <div class="block">
+        <span>Profit</span>
+        <span class="value">
+          {{ profit | currency : "USD" : "symbol" : "1.0-2" }}
+        </span>
+      </div>
+
+      <div class="block">
+        <span>Percent</span>
+        <span class="value">{{ percent | number : "1.0-2" }}%</span>
+        <span class="caption">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit
+        </span>
+      </div>
+
+      <div class="button-block">
+        <div class="stars">
+          <mat-icon
+            *ngFor="let starSize of starsSizes"
+            fontIcon="star"
+            [ngStyle]="{
+              'font-size.px': starSize,
+              'width.px': starSize,
+              'height.px': starSize
+            }"
+          ></mat-icon>
+        </div>
+
+        <button>Lorem ipsum dolor sit</button>
+      </div>
+
+      <div class="bottom-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque
+        animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla
+        corrupti suscipit quam, rem veniam, reiciendis, temporibus magni quis
+        velit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+        cumque animi mollitia ipsam quae fuga voluptatibus aut quia autem nulla
+        corrupti suscipit quam, rem veniam, reiciendis, temporibus magni quis
+        velit! Lorem ipsum dolor sit amet consectetur adipisicing
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+mat-select-trigger {
+  display: flex;
+}
+
+.apr-label {
+  margin-left: 18px;
+  padding: 0 4px;
+  background: #77d8c2;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #fff;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 0;
+  background: #fff;
+
+  input::placeholder {
+    color: #aeb7b5;
+  }
+
+  .info {
+    margin-bottom: 10px;
+    padding: 0 16px 14px;
+    border-bottom: 1px solid #e6e9ed;
+    font-size: 14px;
+    color: #838c8a;
+  }
+
+  ::ng-deep {
+    .option span {
+      display: flex;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      padding: 0 22px 0 5px !important;
+      background: #fff;
+      border: 1px solid #e6e9ed;
+      border-radius: 6px !important;
+
+      .mat-mdc-input-element {
+        height: 40px !important;
+      }
+
+      .mat-mdc-form-field-icon-prefix {
+        color: #e6e9ed;
+
+        .mat-icon {
+          width: 20px;
+          height: 20px;
+          padding: 10px;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .mdc-list-item--selected {
+      font-weight: 600;
+
+      .mat-pseudo-checkbox {
+        display: none;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-mdc-select-panel {
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #def1ed;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #56c6ad;
+    border-radius: 9px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #56c6ad;
+  }
+}
